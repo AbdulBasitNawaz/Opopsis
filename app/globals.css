@@ -1,0 +1,63 @@
+:root {
+  --bg: #09090B;
+  --text-primary: #F5F5F5;
+  --text-secondary: #A1A1AA;
+  --border: #27272A;
+  --border-light: rgba(39, 39, 42, 0.4);
+  --accent: #6C63FF;
+  --accent-muted: rgba(108, 99, 255, 0.15);
+  
+  --font-logo: var(--font-orbitron), sans-serif;
+  --font-heading: var(--font-space-grotesk), sans-serif;
+  --font-body: var(--font-manrope), sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  cursor: default;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg);
+}
+
+/* Custom Scrollbar for modern feel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+a, button {
+  cursor: pointer;
+}
+
+/* Selection Highlight */
+::selection {
+  background: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+/* Subtle micro-transition effects */
+.transition-all {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}

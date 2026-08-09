@@ -1,0 +1,186 @@
+.capabilitiesSection {
+  width: 100%;
+  background-color: var(--bg);
+  padding: 140px 4rem;
+  border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.leftColumn {
+  position: sticky;
+  top: 120px;
+}
+
+.eyebrow {
+  font-family: var(--font-logo);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 480px;
+}
+
+.capabilitiesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.capabilityRow {
+  display: flex;
+  flex-direction: column;
+  padding: 2.8rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  outline: none;
+}
+
+/* Precise 1px dividers that illuminate subtly on hover */
+.capabilityRow:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.rowHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.titleBlock {
+  display: flex;
+  align-items: baseline;
+  gap: 4rem;
+}
+
+.number {
+  font-family: var(--font-logo);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  width: 24px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.arrow {
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+}
+
+.desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-top: 0.8rem;
+  padding-left: 5.5rem; /* Aligns description start precisely with the heading text */
+  max-width: 540px;
+  transition: color 0.4s ease;
+}
+
+/* Premium Mechanical Hover States */
+.capabilityRow:hover {
+  transform: translateX(12px);
+  border-bottom-color: rgba(108, 99, 255, 0.4);
+}
+
+.capabilityRow:hover + .capabilityRow {
+  /* Avoid double border artifacts */
+}
+
+.capabilityRow:hover .title {
+  color: var(--text-primary);
+}
+
+.capabilityRow:hover .arrow {
+  transform: translateX(8px);
+  color: var(--accent);
+}
+
+.capabilityRow:hover .desc {
+  color: var(--text-primary);
+}
+
+/* Keyboard accessibility outline details */
+.capabilityRow:focus-visible {
+  outline: 1px solid var(--accent);
+  padding-left: 12px;
+}
+
+/* Responsive breakdowns */
+@media (max-width: 1100px) {
+  .grid {
+    gap: 4rem;
+  }
+  .titleBlock {
+    gap: 2.5rem;
+  }
+  .desc {
+    padding-left: 4rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .capabilitiesSection {
+    padding: 100px 2rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .leftColumn {
+    position: static;
+  }
+  
+  .capabilityRow {
+    padding: 2.2rem 0;
+  }
+  
+  .capabilityRow:hover {
+    transform: translateX(8px);
+  }
+}
