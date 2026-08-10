@@ -1,10 +1,9 @@
 .capabilitiesSection {
   width: 100%;
   background-color: var(--bg);
-  padding: 140px 4rem;
+  padding: 90px 4rem;
   border-top: 1px solid var(--border);
   position: relative;
-  overflow: hidden;
 }
 
 .grid {
@@ -18,7 +17,7 @@
 
 .leftColumn {
   position: sticky;
-  top: 120px;
+  top: 80px;
 }
 
 .eyebrow {
@@ -51,22 +50,28 @@
 }
 
 .capabilitiesList {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.innerList {
   display: flex;
   flex-direction: column;
+  will-change: transform;
 }
 
 .capabilityRow {
   display: flex;
   flex-direction: column;
-  padding: 2.8rem 0;
+  padding: 2.1rem 0;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
   text-decoration: none;
   outline: none;
 }
 
-/* Precise 1px dividers that illuminate subtly on hover */
 .capabilityRow:first-child {
   border-top: 1px solid var(--border);
 }
@@ -115,31 +120,31 @@
   line-height: 1.6;
   color: var(--text-secondary);
   margin-top: 0.8rem;
-  padding-left: 5.5rem; /* Aligns description start precisely with the heading text */
+  padding-left: 5.5rem;
   max-width: 540px;
   transition: color 0.4s ease;
 }
 
-/* Premium Mechanical Hover States */
-.capabilityRow:hover {
+/* Premium Mechanical Hover & Active Snapped States */
+.capabilityRow:hover,
+.activeRow {
   transform: translateX(12px);
   border-bottom-color: rgba(108, 99, 255, 0.4);
 }
 
-.capabilityRow:hover + .capabilityRow {
-  /* Avoid double border artifacts */
-}
-
-.capabilityRow:hover .title {
+.capabilityRow:hover .title,
+.activeRow .title {
   color: var(--text-primary);
 }
 
-.capabilityRow:hover .arrow {
+.capabilityRow:hover .arrow,
+.activeRow .arrow {
   transform: translateX(8px);
   color: var(--accent);
 }
 
-.capabilityRow:hover .desc {
+.capabilityRow:hover .desc,
+.activeRow .desc {
   color: var(--text-primary);
 }
 
