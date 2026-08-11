@@ -140,7 +140,7 @@ export default function Capabilities() {
 
   return (
     <section className={styles.capabilitiesSection} id="services" ref={sectionRef}>
-      <div className={styles.grid}>
+      <div className={`${styles.grid} globalContainer`}>
         {/* Left Side Position/Content */}
         <div className={styles.leftColumn}>
           <span className={styles.eyebrow}>What We Build</span>

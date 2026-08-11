@@ -1,0 +1,291 @@
+.howWeWorkSection {
+  width: 100%;
+  background-color: var(--bg);
+  padding: 140px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.leftColumn {
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  font-family: var(--font-logo);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+.headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin-bottom: 3.5rem;
+}
+
+/* Abstract Visual Element Container */
+.visualContainer {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: 280px;
+  background-color: rgba(9, 9, 11, 0.5);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visualContainerActive {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.visualGrid {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(39, 39, 42, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 39, 42, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* Timeline Layout */
+.timelineContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  padding-left: 2.5rem;
+}
+
+/* Vertical line that draws itself */
+.timelineLine {
+  position: absolute;
+  left: 5px; /* Center of the 2px line is at 6px */
+  width: 2px;
+  background-color: var(--border);
+}
+
+.timelineLineProgress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 0%;
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transition: height 0.1s ease;
+  transform-origin: top;
+}
+
+.stageNode {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stageNodeActive {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Node indicator dot on the vertical line */
+.nodeDot {
+  position: absolute;
+  left: -2.5rem; /* stageNode is padded left 2.5rem, so -2.5rem places left edge at 0px, center at 6px */
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--bg);
+  border: 2px solid var(--border);
+  z-index: 5;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stageNodeDot {
+  /* Common helper class for JS DOM query select */
+}
+
+.loopContainer {
+  position: absolute;
+  left: -2.5rem;
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  z-index: 5;
+  overflow: visible;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.loopContainer .loopSvg {
+  position: absolute;
+  left: -14px; /* Centers x=20 precisely on the line center (6px) */
+  top: -14px;  /* Centers y=20 on the dot center (6px) */
+  width: 40px;
+  height: 40px;
+  overflow: visible;
+}
+
+.loopContainer .loopSvg circle,
+.loopContainer .loopSvg path {
+  transition: stroke 0.4s ease, fill 0.4s ease, filter 0.4s ease;
+}
+
+.nodeDot.nodeDotActive {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* Activate loop SVG highlight when Snapped */
+.loopContainer.nodeDotActive .loopSvg circle {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+.loopContainer.nodeDotActive .loopSvg path {
+  fill: var(--accent);
+}
+
+.stageHeader {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.stageNum {
+  font-family: var(--font-logo);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.stageTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  opacity: 0.8;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stageDesc {
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 580px;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Restrained Technical Hover States */
+.stageNode:hover .stageTitle {
+  opacity: 1;
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.stageNode:hover .stageDesc {
+  color: var(--text-primary);
+  transform: translateX(4px);
+}
+
+.stageNode:hover .nodeDot {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transform: scale(1.15);
+}
+
+/* Active Highlight of the loop node when Hovered */
+.stageNode:hover .loopContainer .loopSvg circle {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+.stageNode:hover .loopContainer .loopSvg path {
+  fill: var(--accent);
+}
+
+/* Sibling progress indicator meeting states */
+.timelineLineActive ~ .stageNode .loopContainer .loopSvg circle {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+.timelineLineActive ~ .stageNode .loopContainer .loopSvg path {
+  fill: var(--accent);
+}
+
+.timelineLineActive ~ .stageNode .loopContainer {
+  transform: scale(1.05);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 950px) {
+  .howWeWorkSection {
+    padding: 100px 0;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .leftColumn {
+    position: static;
+  }
+  
+  .visualContainer {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .timelineContainer {
+    gap: 4rem;
+  }
+}
